@@ -7,20 +7,24 @@ import { Card } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";
 import { Checkbox } from "@/components/ui/checkbox";
 import { SlidersHorizontal } from "lucide-react";
+import { defaultProducts, productImages } from "@/data/products";
 
 const CategoryPage = () => {
   const { category } = useParams();
 
-  const products = Array.from({ length: 12 }, (_, i) => ({
-    id: `cat-${i}`,
-    name: `${category} Product ${i + 1} - High Quality with Premium Features`,
-    price: Math.floor(Math.random() * 1000) + 100,
-    originalPrice: Math.floor(Math.random() * 1500) + 200,
-    image: `https://images.unsplash.com/photo-${1500000000000 + i}?w=500&q=80`,
-    rating: 4.5 + Math.random() * 0.4,
-    sales: Math.floor(Math.random() * 5000) + 500,
-    badge: i % 3 === 0 ? "HOT" : i % 3 === 1 ? "NEW" : undefined
-  }));
+  const products = Array.from({ length: 12 }, (_, i) => {
+    const imageKeys = Object.keys(productImages);
+    return {
+      id: `cat-${i}`,
+      name: `${category} Product ${i + 1} - High Quality with Premium Features`,
+      price: Math.floor(Math.random() * 1000) + 100,
+      originalPrice: Math.floor(Math.random() * 1500) + 200,
+      image: productImages[imageKeys[i % imageKeys.length] as keyof typeof productImages],
+      rating: 4.5 + Math.random() * 0.4,
+      sales: Math.floor(Math.random() * 5000) + 500,
+      badge: i % 3 === 0 ? "HOT" : i % 3 === 1 ? "NEW" : undefined
+    };
+  });
 
   return (
     <div className="min-h-screen bg-background">

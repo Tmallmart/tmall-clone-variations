@@ -3,6 +3,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Package, Truck, CheckCircle, XCircle } from "lucide-react";
+import { defaultProducts } from "@/data/products";
 
 const Orders = () => {
   const orders = [
@@ -12,7 +13,7 @@ const Orders = () => {
       status: "Delivered",
       total: 299,
       items: [
-        { name: "Premium Wireless Headphones", qty: 1, image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&q=80" }
+        { name: "Premium Wireless Headphones", qty: 1, image: defaultProducts[0].image }
       ]
     },
     {
@@ -21,7 +22,7 @@ const Orders = () => {
       status: "In Transit",
       total: 598,
       items: [
-        { name: "Smart Watch Pro", qty: 2, image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=200&q=80" }
+        { name: "Smart Watch Pro", qty: 2, image: defaultProducts[1].image }
       ]
     },
     {
@@ -30,7 +31,7 @@ const Orders = () => {
       status: "Processing",
       total: 149,
       items: [
-        { name: "Wireless Earbuds", qty: 1, image: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=200&q=80" }
+        { name: "Wireless Earbuds", qty: 1, image: defaultProducts[6].image }
       ]
     },
   ];

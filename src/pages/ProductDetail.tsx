@@ -7,19 +7,13 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Star, Heart, Share2, ShoppingCart, Shield, Truck, RotateCcw } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { defaultProducts } from "@/data/products";
 
 const ProductDetail = () => {
   const { id } = useParams();
-
-  const relatedProducts = Array.from({ length: 4 }, (_, i) => ({
-    id: `rel-${i}`,
-    name: `Related Product ${i + 1} - Premium Quality`,
-    price: Math.floor(Math.random() * 500) + 100,
-    originalPrice: Math.floor(Math.random() * 800) + 200,
-    image: `https://images.unsplash.com/photo-${1500000000000 + i}?w=500&q=80`,
-    rating: 4.7 + Math.random() * 0.2,
-    sales: Math.floor(Math.random() * 3000) + 500
-  }));
+  
+  const currentProduct = defaultProducts.find(p => p.id === id) || defaultProducts[0];
+  const relatedProducts = defaultProducts.slice(0, 4);
 
   return (
     <div className="min-h-screen bg-background">
@@ -32,17 +26,17 @@ const ProductDetail = () => {
           <div>
             <div className="aspect-square bg-muted rounded-lg mb-4 overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=80"
-                alt="Product"
+                src={currentProduct.image}
+                alt={currentProduct.name}
                 className="w-full h-full object-cover"
               />
             </div>
             <div className="grid grid-cols-4 gap-4">
-              {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="aspect-square bg-muted rounded-lg overflow-hidden cursor-pointer hover:ring-2 ring-primary transition-all">
+              {defaultProducts.slice(0, 4).map((product) => (
+                <div key={product.id} className="aspect-square bg-muted rounded-lg overflow-hidden cursor-pointer hover:ring-2 ring-primary transition-all">
                   <img
-                    src={`https://images.unsplash.com/photo-${1505740420928 + i * 1000}?w=200&q=80`}
-                    alt={`Thumbnail ${i}`}
+                    src={product.image}
+                    alt={product.name}
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -58,7 +52,7 @@ const ProductDetail = () => {
             </div>
 
             <h1 className="text-3xl font-bold mb-4">
-              Premium Wireless Headphones - Noise Cancelling with 40H Battery Life
+              {currentProduct.name}
             </h1>
 
             <div className="flex items-center gap-4 mb-6">
@@ -75,11 +69,15 @@ const ProductDetail = () => {
 
             <Card className="p-6 mb-6 bg-gradient-to-br from-primary/5 to-accent/5">
               <div className="flex items-end gap-3 mb-2">
-                <span className="text-4xl font-bold text-primary">¥299</span>
-                <span className="text-xl text-muted-foreground line-through">¥599</span>
-                <Badge className="bg-destructive">-50%</Badge>
+                <span className="text-4xl font-bold text-primary">¥{currentProduct.price}</span>
+                {currentProduct.originalPrice && (
+                  <>
+                    <span className="text-xl text-muted-foreground line-through">¥{currentProduct.originalPrice}</span>
+                    <Badge className="bg-destructive">-{Math.round(((currentProduct.originalPrice - currentProduct.price) / currentProduct.originalPrice) * 100)}%</Badge>
+                  </>
+                )}
               </div>
-              <p className="text-sm text-muted-foreground">Limited time offer - Save ¥300</p>
+              <p className="text-sm text-muted-foreground">Limited time offer - Save ¥{(currentProduct.originalPrice || 0) - currentProduct.price}</p>
             </Card>
 
             <div className="space-y-4 mb-6">

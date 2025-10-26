@@ -3,14 +3,16 @@ import CategoryNav from "@/components/CategoryNav";
 import ProductCard from "@/components/ProductCard";
 import { Card } from "@/components/ui/card";
 import { Zap, Clock } from "lucide-react";
+import { productImages } from "@/data/products";
 
 const Deals = () => {
+  const imageKeys = Object.keys(productImages);
   const flashDeals = Array.from({ length: 12 }, (_, i) => ({
     id: `deal-${i}`,
     name: `Flash Deal Product ${i + 1} - Limited Time Offer`,
     price: Math.floor(Math.random() * 500) + 50,
     originalPrice: Math.floor(Math.random() * 1000) + 200,
-    image: `https://images.unsplash.com/photo-${1500000000000 + i * 10000}?w=500&q=80`,
+    image: productImages[imageKeys[i % imageKeys.length] as keyof typeof productImages],
     badge: "FLASH",
     rating: 4.5 + Math.random() * 0.4,
     sales: Math.floor(Math.random() * 10000) + 1000

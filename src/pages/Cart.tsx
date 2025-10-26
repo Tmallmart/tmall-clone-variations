@@ -4,6 +4,7 @@ import { Card } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Trash2, Plus, Minus } from "lucide-react";
 import { Link } from "react-router-dom";
+import { defaultProducts } from "@/data/products";
 
 const Cart = () => {
   const cartItems = [
@@ -12,21 +13,21 @@ const Cart = () => {
       name: "Premium Wireless Headphones",
       price: 299,
       quantity: 1,
-      image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&q=80"
+      image: defaultProducts[0].image
     },
     {
       id: "2",
       name: "Smart Watch Pro",
       price: 199,
       quantity: 2,
-      image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=200&q=80"
+      image: defaultProducts[1].image
     },
     {
       id: "3",
       name: "Wireless Earbuds",
       price: 149,
       quantity: 1,
-      image: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=200&q=80"
+      image: defaultProducts[6].image
     }
   ];
 

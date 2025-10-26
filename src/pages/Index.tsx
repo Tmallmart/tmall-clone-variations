@@ -5,87 +5,10 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ChevronRight, Zap, TrendingUp, Gift, Store } from "lucide-react";
 import { Link } from "react-router-dom";
+import { defaultProducts } from "@/data/products";
 
 const Index = () => {
-  const featuredProducts = [
-    {
-      id: "1",
-      name: "Premium Wireless Headphones - Noise Cancelling with 40H Battery Life",
-      price: 299,
-      originalPrice: 599,
-      image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80",
-      badge: "HOT",
-      rating: 4.9,
-      sales: 5230
-    },
-    {
-      id: "2",
-      name: "Smart Watch Pro - Fitness Tracker with Heart Rate Monitor",
-      price: 199,
-      originalPrice: 399,
-      image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80",
-      badge: "NEW",
-      rating: 4.8,
-      sales: 3120
-    },
-    {
-      id: "3",
-      name: "Luxury Leather Handbag - Designer Collection 2024",
-      price: 899,
-      originalPrice: 1299,
-      image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=500&q=80",
-      rating: 4.7,
-      sales: 890
-    },
-    {
-      id: "4",
-      name: "4K Ultra HD Smart TV - 55 inch with HDR10+ Support",
-      price: 1299,
-      originalPrice: 1999,
-      image: "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=500&q=80",
-      badge: "SALE",
-      rating: 4.9,
-      sales: 2100
-    },
-    {
-      id: "5",
-      name: "Gaming Laptop - RTX 4080, 32GB RAM, 1TB SSD",
-      price: 2499,
-      originalPrice: 3199,
-      image: "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=500&q=80",
-      badge: "HOT",
-      rating: 4.8,
-      sales: 1560
-    },
-    {
-      id: "6",
-      name: "Professional Camera Kit - 24MP DSLR with Lenses",
-      price: 1899,
-      originalPrice: 2599,
-      image: "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=500&q=80",
-      rating: 4.9,
-      sales: 780
-    },
-    {
-      id: "7",
-      name: "Wireless Earbuds Pro - Active Noise Cancellation",
-      price: 149,
-      originalPrice: 249,
-      image: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=500&q=80",
-      badge: "NEW",
-      rating: 4.7,
-      sales: 4200
-    },
-    {
-      id: "8",
-      name: "Designer Sneakers - Limited Edition Colorway",
-      price: 399,
-      originalPrice: 599,
-      image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80",
-      rating: 4.8,
-      sales: 2340
-    }
-  ];
+  const featuredProducts = defaultProducts;
 
   return (
     <div className="min-h-screen bg-background">

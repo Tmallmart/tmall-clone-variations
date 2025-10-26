@@ -1,17 +1,10 @@
 import Navbar from "@/components/Navbar";
 import ProductCard from "@/components/ProductCard";
 import { Heart } from "lucide-react";
+import { defaultProducts } from "@/data/products";
 
 const Favorites = () => {
-  const favorites = Array.from({ length: 8 }, (_, i) => ({
-    id: `fav-${i}`,
-    name: `Favorite Product ${i + 1} - Premium Quality Item`,
-    price: Math.floor(Math.random() * 800) + 100,
-    originalPrice: Math.floor(Math.random() * 1200) + 300,
-    image: `https://images.unsplash.com/photo-${1500000000000 + i * 5000}?w=500&q=80`,
-    rating: 4.6 + Math.random() * 0.3,
-    sales: Math.floor(Math.random() * 4000) + 500
-  }));
+  const favorites = defaultProducts;
 
   return (
     <div className="min-h-screen bg-background">

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { User, Package, Heart, MapPin, CreditCard, Settings } from "lucide-react";
+import { defaultProducts } from "@/data/products";
 
 const Account = () => {
   return (
@@ -77,12 +78,12 @@ const Account = () => {
 
                       <div className="flex gap-4 mb-4">
                         <img
-                          src={`https://images.unsplash.com/photo-${1505740420928 + order * 1000}?w=200&q=80`}
+                          src={defaultProducts[(order - 1) % defaultProducts.length].image}
                           alt="Product"
                           className="w-20 h-20 object-cover rounded"
                         />
                         <div className="flex-1">
-                          <h4 className="font-semibold mb-1">Premium Wireless Headphones</h4>
+                          <h4 className="font-semibold mb-1">{defaultProducts[(order - 1) % defaultProducts.length].name}</h4>
                           <p className="text-sm text-muted-foreground">Quantity: 1</p>
                         </div>
                       </div>
@@ -98,18 +99,18 @@ const Account = () => {
 
               <TabsContent value="wishlist">
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {[1, 2, 3, 4, 5, 6].map((item) => (
-                    <Card key={item} className="overflow-hidden">
+                  {defaultProducts.slice(0, 6).map((product) => (
+                    <Card key={product.id} className="overflow-hidden">
                       <img
-                        src={`https://images.unsplash.com/photo-${1505740420928 + item * 1000}?w=400&q=80`}
-                        alt="Product"
+                        src={product.image}
+                        alt={product.name}
                         className="w-full aspect-square object-cover"
                       />
                       <div className="p-4">
                         <h3 className="font-semibold mb-2 line-clamp-2">
-                          Wishlist Product {item}
+                          {product.name}
                         </h3>
-                        <p className="text-lg font-bold text-primary mb-3">¥{199 + item * 50}</p>
+                        <p className="text-lg font-bold text-primary mb-3">¥{product.price}</p>
                         <Button className="w-full bg-gradient-to-r from-primary to-accent">
                           Add to Cart
                         </Button>
